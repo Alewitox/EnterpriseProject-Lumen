@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="seriesList" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0007d60a-a445-4d35-8995-efe65d106f79">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
+	<queryString language="SQL">
+		<![CDATA[select  tv_show.series.original_title,  tv_show.series.status,  tv_show.series.first_air_date,   tv_show.series.last_air_date from   tv_show.series]]>
+	</queryString>
+	<field name="original_title" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="original_title"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="series"/>
+	</field>
+	<field name="status" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="status"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="series"/>
+	</field>
+	<field name="first_air_date" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="first_air_date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="series"/>
+	</field>
+	<field name="last_air_date" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="last_air_date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="series"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="157" y="20" width="240" height="40" uuid="0173a866-4d77-4d72-bc53-392280afa315"/>
+				<textElement>
+					<font size="26"/>
+				</textElement>
+				<text><![CDATA[Listado de series]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="45" splitType="Stretch">
+			<staticText>
+				<reportElement x="30" y="0" width="100" height="30" uuid="95c912d9-6541-4348-9548-12b4cd841a3d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3c1db4fd-8fcd-4c6a-83ca-4527c65d48c6"/>
+				</reportElement>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="170" y="0" width="100" height="30" uuid="2755f9da-0087-4301-a493-0ccbd8110302">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b696ceb0-dd74-4d8e-a692-438e37f8e860"/>
+				</reportElement>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="0" width="120" height="30" uuid="fe83dd56-6565-4a84-94e0-b7d67a37fa6c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c8bcb3aa-01e7-4806-8fea-569f2fe59ed3"/>
+				</reportElement>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Primera emisión]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="430" y="0" width="114" height="30" uuid="95cd50af-a96a-43da-8644-4957fae80805">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2eb0fcc7-fec6-471e-80f9-bf5ef4490c55"/>
+				</reportElement>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Última emisión]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="46" splitType="Stretch">
+			<textField>
+				<reportElement x="30" y="10" width="100" height="30" uuid="253c3628-b23b-420b-af1b-42d061f08d2e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3c1db4fd-8fcd-4c6a-83ca-4527c65d48c6"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{original_title}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="170" y="10" width="100" height="30" uuid="910eaf4e-bdc2-453d-8d5b-0e1a2b8b1bbd">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b696ceb0-dd74-4d8e-a692-438e37f8e860"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="10" width="100" height="30" uuid="22e0a690-5f2b-44ee-8f05-76d806e02251">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c8bcb3aa-01e7-4806-8fea-569f2fe59ed3"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{first_air_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="10" width="100" height="30" uuid="ed38fc3c-3eb8-4dd7-92b3-8801cf02d19f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2eb0fcc7-fec6-471e-80f9-bf5ef4490c55"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{last_air_date}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
