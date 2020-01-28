@@ -36,6 +36,6 @@ class ProductController extends Controller
     public function deleteProduct($id)
     {
         Product::findOrFail($id)->delete();
-        return response('Product deleted', 200);
+        return response()->json('Product deleted', 200);
     }
 }
