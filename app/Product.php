@@ -23,5 +23,17 @@ class Product extends Model {
      * @var array
      */
     protected $hidden = [];
-  
+
+
+    public function distribution() {
+        return $this->hasOne('App\Distribution');
+    }
+
+    public function availability() {
+        return $this->hasOne('App\Availability');
+    }
+
+    public function reservation() {
+        return $this->belongsToMany('App\Reservation');
+    }
 }

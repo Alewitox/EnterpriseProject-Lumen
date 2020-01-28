@@ -24,4 +24,10 @@ class Reservation extends Model {
     
     public $timestamps = false;
 
+
+    public function products(){
+        return $this->belongsToMany('App\Product','items_reservation','id_reservation','id_product')
+        ->withPivot('price')
+        ->withTimestamps();
+    }
 }

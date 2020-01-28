@@ -16,9 +16,11 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(User::class, function (Faker $faker) {
+$factory->define(App\Product::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
-        'email' => $faker->email,
+        'name' => $faker->word,
+        'description' => $faker->text,
     ];
 });
+
+

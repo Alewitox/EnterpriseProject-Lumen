@@ -23,5 +23,9 @@ class Availability extends Model {
     protected $hidden = [];
 
     protected $primaryKey = 'id_product';
+
+    public function product() {
+        return $this->belongsTo('App\Product');
+    }
     
 }
