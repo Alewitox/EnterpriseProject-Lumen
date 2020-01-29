@@ -6,12 +6,20 @@ use App\Product;
 class ProductTest extends TestCase
 {
 
+    /**
+     * /products [POST]
+     */
+
     public function testCreateProduct()
     {
         $this->post('/api/products', ['name' => 'masaje', 'description' => 'en el hotel Riu Maspalomas']);
         $this->seeStatusCode(201);
         $this->seeJson(['name' => 'masaje', 'description' => 'en el hotel Riu Maspalomas']);
     }
+   
+    /**
+     * /products/id [GET]
+     */
 
     public function testGetProduct(){
 
@@ -26,6 +34,10 @@ class ProductTest extends TestCase
         );
     }
 
+    /**
+    * /products [GET]
+    */
+
     public function testGetAllProducts(){
 
         $this->get("/api/products", []);
@@ -38,9 +50,11 @@ class ProductTest extends TestCase
         ]);
         
     }
+
     /**
      * /products/id [PUT]
      */
+
     public function testUpdateProduct(){
 
         $parameters = [
@@ -56,6 +70,7 @@ class ProductTest extends TestCase
     /**
      * /products/id [DELETE]
      */
+
     public function testDeleteProduct(){
         
         $this->delete("/api/products/1", [], []);

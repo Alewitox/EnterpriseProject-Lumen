@@ -14,10 +14,12 @@ class CreateAvailabilityTable extends Migration
     public function up()
     {
         Schema::create('availabilities', function (Blueprint $table) {
-            $table->increments('id_product');
+            $table->increments('id');
             $table->timestamps();
             $table->float('price', 8, 2);
             $table->float('quota', 8 , 2);
+            $table->integer('id_product')->unsigned();
+            $table->foreign('id_product')->references('id')->on('availabilities');
         });
     }
 

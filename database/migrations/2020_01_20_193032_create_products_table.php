@@ -17,6 +17,14 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->text('description');
+            
+            $table->integer('id_distribution')->unsigned();
+
+        });
+        Schema::table('products', function (Blueprint $table) {
+
+            $table->foreign('id_distribution')->references('id')->on('distributions');
+            
         });
     }
 
