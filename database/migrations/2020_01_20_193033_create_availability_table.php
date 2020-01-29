@@ -19,7 +19,7 @@ class CreateAvailabilityTable extends Migration
             $table->float('price', 8, 2);
             $table->float('quota', 8 , 2);
             $table->integer('id_product')->unsigned();
-            $table->foreign('id_product')->references('id')->on('availabilities');
+            $table->foreign('id_product')->references('id')->on('products');
         });
     }
 
