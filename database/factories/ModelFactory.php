@@ -16,11 +16,12 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(App\Product::class, function (Faker $faker) {
-    return [
-        'name' => $faker->word,
-        'description' => $faker->text,
-    ];
-});
+// $factory->define(App\Product::class, function (Faker $faker) {
+//     return [
+//         'name' => $faker->word,
+//         'description' => $faker->text,
+//         'id_distribution' =>'1',
+//     ];
+// });
 
 

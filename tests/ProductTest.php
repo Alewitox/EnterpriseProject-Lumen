@@ -12,11 +12,12 @@ class ProductTest extends TestCase
 
     public function testCreateProduct()
     {
-        $this->post('/api/products', ['name' => 'masaje', 'description' => 'en el hotel Riu Maspalomas']);
+        $this->post('/api/products', ['name' => 'masaje', 'description' => 'en el hotel Riu Maspalomas', 'id_distribution' => '1']);
         $this->seeStatusCode(201);
-        $this->seeJson(['name' => 'masaje', 'description' => 'en el hotel Riu Maspalomas']);
+        $this->seeJson(['name' => 'masaje', 'description' => 'en el hotel Riu Maspalomas', 'id_distribution' => '1']);
     }
    
+    
     /**
      * /products/id [GET]
      */
@@ -60,11 +61,12 @@ class ProductTest extends TestCase
         $parameters = [
             'name' => 'Update succesfull',
             'description' => 'New change',
+            'id_distribution' => '1',
         ];
 
         $this->put("/api/products/1", $parameters, []);
         $this->seeStatusCode(200);
-        $this->seeJson($parameters);
+        $this->seeJson(['Product updated']);
     }
 
     /**

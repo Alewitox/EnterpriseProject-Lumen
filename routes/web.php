@@ -39,17 +39,11 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     // Auth Endpoints
     $router->post('register',['uses' => 'AuthController@register']);
     $router->post('login', ['uses' => 'AuthController@login']);
-    
-
-    // Endpoints Users table
-    $router->get('users', 'UserController@showAllUsers');
-    $router->get('users/{id}', 'UserController@showOneUser');
-    $router->post('users', ['uses' => 'UserController@createUser']);
-    $router->put('users/{id}', ['uses' => 'UserController@updateUser']);
-    $router->delete('users/{id}', ['uses' => 'UserController@deleteUser']);
-
+    $router->post('user', ['uses' => 'UserController@showOneUserWithEmail']);
 
     // Endpoints Products table
+    
+    $router->get('countProducts',  ['uses' => 'ProductController@countProducts']);
     $router->get('products',  ['uses' => 'ProductController@showAllProducts']);
     $router->get('products/{id}',  ['uses' => 'ProductController@showOneProduct']);
     $router->post('products', ['uses' => 'ProductController@createProduct']);
@@ -72,6 +66,19 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->put('availability/{id}', ['uses' => 'AvailabilityController@updateAvailability']);
     $router->delete('availability/{id}', ['uses' => 'AvailabilityController@deleteAvailability']);
 
+});
+  
+
+ $router->group(['prefix' => 'auth', 'middleware' => 'auth'], function () use ($router) {
+
+
+    // Endpoints Users table
+    $router->get('users', 'UserController@showAllUsers');
+    $router->get('users/{id}', 'UserController@showOneUser');
+    $router->post('users', ['uses' => 'UserController@createUser']);
+    $router->put('users/{id}', ['uses' => 'UserController@updateUser']);
+    $router->delete('users/{id}', ['uses' => 'UserController@deleteUser']);
+
 
     // Endpoints Reservations table
     $router->get('reservation',  ['uses' => 'ReservationController@showAllReservations']);
@@ -79,6 +86,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->post('reservation', ['uses' => 'ReservationController@createReservation']);
     $router->put('reservation/{id}', ['uses' => 'ReservationController@updateReservation']);
     $router->delete('reservation/{id}', ['uses' => 'ReservationController@deleteReservation']);
+
 
 });
 

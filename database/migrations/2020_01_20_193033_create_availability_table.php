@@ -15,7 +15,7 @@ class CreateAvailabilityTable extends Migration
     {
         Schema::create('availabilities', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->timestamp('timestamp');
             $table->float('price', 8, 2);
             $table->float('quota', 8 , 2);
             $table->integer('id_product')->unsigned();
