@@ -1,5 +1,6 @@
 <?php
 use App\Reservation;
+use App\Product;
 
 
 /*
@@ -97,13 +98,27 @@ $router->get('/create_reservations/{id_reservation}/{id_product}', function ($id
     echo json_encode("guardado");
 });
 
+
 $router->get('/select_reservations/{id_reservation}', function ($id_reservation) use ($router) {
     $reservation = Reservation::find($id_reservation);
     $array = array();
     $number=0;
     foreach($reservation->products as $product){
-        $array[$number]=array('status'=>$product->status,'date'=>$product->date,'price'=>$product->pivot->price);
+        $array[$number]=array('status'=>$reservation->status,'date'=>$reservation->date,'price'=>$product->pivot->price);
         $number++;
     }
+    echo json_encode($array);
+});
+
+
+$router->get('/select_availabilities/{id_product}', function ($id_product) use ($router) {
+    $products = Product::find($id_product);
+    $array = array();
+    $number=0;
+    foreach($products->availability as $availability){
+        $array[$number]=array('id'=>$availability->id, 'timestamp'=>$availability->timestamp,'price'=>$availability->price,'quota'=>$availability->quota, 'id_product'=>$availability->id_product);
+        $number++;
+    }
+   // error_log($products->availability);
     echo json_encode($array);
 });

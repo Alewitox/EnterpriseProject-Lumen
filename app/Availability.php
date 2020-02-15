@@ -12,7 +12,7 @@ class Availability extends Model {
      * @var array
      */
     protected $fillable = [
-        'price', 'quota'
+     'timestamp', 'price', 'quota', 'id_products'
     ];
 
     /**
@@ -22,7 +22,6 @@ class Availability extends Model {
      */
     protected $hidden = [];
 
-    protected $primaryKey = 'id_product';
 
     public function product() {
         return $this->belongsTo('App\Product');

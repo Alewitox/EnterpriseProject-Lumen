@@ -51,8 +51,13 @@ class UserController extends Controller
 
     public function showOneUserWithEmail(Request $request)
     {
-        $user=User::select('id')->where('email',$request->email);
-        return response()->json($user->get('id')->get(0));
+        //error_log(json_decode($request)[0]->email);
+        
+        error_log("hola");
+        //error_log(json_decode($request->content(),true));
+        $user=User::select('id', 'name', 'email' )->where('email',$request[0]['email']);
+        //error_log(response()->json($user->get('id')));
+        return response()->json($user->get('id'));
     }
 
 
