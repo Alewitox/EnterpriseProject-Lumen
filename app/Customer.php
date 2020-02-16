@@ -53,6 +53,6 @@ class Customer extends Model implements AuthenticatableContract, AuthorizableCon
     }
     
     public function reservation() {
-        return $this->hasMany('App\Reservation');
+        return $this->hasMany('App\Reservation', 'id_customer');
     }
 }

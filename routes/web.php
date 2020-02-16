@@ -1,6 +1,7 @@
 <?php
 use App\Reservation;
 use App\Product;
+use App\Customer;
 
 
 /*
@@ -40,7 +41,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     // Auth Endpoints
     $router->post('register',['uses' => 'AuthController@register']);
     $router->post('login', ['uses' => 'AuthController@login']);
-    $router->post('user', ['uses' => 'UserController@showOneUserWithEmail']);
+    $router->post('user', ['uses' => 'CustomerController@showOneUserWithEmail']);
 
     // Endpoints Products table
     
@@ -74,11 +75,11 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
 
     // Endpoints Users table
-    $router->get('users', 'UserController@showAllUsers');
-    $router->get('users/{id}', 'UserController@showOneUser');
-    $router->post('users', ['uses' => 'UserController@createUser']);
-    $router->put('users/{id}', ['uses' => 'UserController@updateUser']);
-    $router->delete('users/{id}', ['uses' => 'UserController@deleteUser']);
+    $router->get('users', 'CustomerController@showAllUsers');
+    $router->get('users/{id}', 'CustomerController@showOneUser');
+    $router->post('users', ['uses' => 'CustomerController@createUser']);
+    $router->put('users/{id}', ['uses' => 'CustomerController@updateUser']);
+    $router->delete('users/{id}', ['uses' => 'CustomerController@deleteUser']);
 
 
     // Endpoints Reservations table
@@ -118,6 +119,31 @@ $router->get('/select_availabilities/{id_product}', function ($id_product) use (
     foreach($products->availability as $availability){
         $array[$number]=array('id'=>$availability->id, 'timestamp'=>$availability->timestamp,'price'=>$availability->price,'quota'=>$availability->quota, 'id_product'=>$availability->id_product);
         $number++;
+    }
+   // error_log($products->availability);
+    echo json_encode($array);
+});
+
+
+$router->get('/allProductsForCustomer/{id_customer}', function ($id_customer) use ($router) {
+    $customer = App\Customer::find($id_customer);
+    $array = array();
+    $number=0;
+    foreach($customer->reservation as $reservation){
+        foreach($reservation->products as $product){
+            $array[$number]=array(
+                'id'=>$product->id,
+                'name'=>$product->name,
+                 'description'=>$product->description,
+                 'img'=>$product->img,
+                 'status'=>$reservation->status,
+                 'date'=>$reservation->date,
+                 'total'=>$reservation->total,
+                 'id_distribution'=>$product->id_distribution,
+
+                );
+            $number++;
+    }
     }
    // error_log($products->availability);
     echo json_encode($array);
