@@ -74,7 +74,7 @@ class DatabaseSeeder extends Seeder
         DB::table('products')->insert([
             'name' => 'Roque Nublo',
             'description' => 'This Natural Monument is one of the most representatives icons from the Canary Islands and, of course, from Gran Canaria. It is located in the municipality of Tejeda and it is the second highest place from the island with 1.813 meters high above sea level. Moreover, the Roque Nublo and its surroundings were declared Special Natural Area in 1987.',
-            'img' => 'https://viajeronomada.com/wp-content/uploads/2017/06/quevisitarenlaspalmas.jpg',
+            'img' => 'https://www.holaislascanarias.com/sites/default/files/resource/roque_nublo-gran_canaria_3.jpg',
             'id_distribution' => '1',
         ]);
 

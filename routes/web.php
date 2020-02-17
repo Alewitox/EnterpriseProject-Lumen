@@ -108,7 +108,7 @@ $router->post('/createReservation', function (Illuminate\Http\Request $request) 
     }
 
 
-    return json_encode(['state'=>'guardado']);
+    return json_encode(['state'=>'Your booking has been created']);
 });
 
 
