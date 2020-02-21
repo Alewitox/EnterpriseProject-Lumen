@@ -10,12 +10,12 @@ class ReportController extends Controller {
   public function generateReport() {
        
     $jasper = new JasperPHP;
-    $jasper->compile(base_path('//public/seriesList.jrxml'))->execute();
+    $jasper->compile(base_path('//public/productList.jrxml'))->execute();
     
-    $filename = 'seriesList';
+    $filename = 'productList';
     $output = base_path('//public/' . $filename);
     $jasper->process(
-            base_path('//public/seriesList.jasper'),
+            base_path('//public/productList.jasper'),
             $output,
             array('pdf', 'rtf'),
             array(),
@@ -28,7 +28,7 @@ class ReportController extends Controller {
               'password' => '1234',
             ),
     )->execute();
-    return response()->json(['message' => 'Listado de series guardado en la ruta /public']);
+    return response()->json(['message' => 'Available products list saved on path /public']);
 }
 
 }
