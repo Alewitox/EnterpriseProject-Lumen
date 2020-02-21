@@ -18,6 +18,8 @@ class CreateReservationTable extends Migration
             $table->float('total', 8, 2);
             $table->enum('status',['realizada','cancelada','pendiente' ]);
             $table->date('date');
+            $table->integer('id_customer')->unsigned();
+            $table->foreign('id_customer')->references('id')->on('customers')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

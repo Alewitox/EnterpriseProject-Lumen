@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
+use App\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class UserController extends Controller
+class CustomerController extends Controller
 {
 
 /**
@@ -27,7 +27,7 @@ class UserController extends Controller
      */
     public function showAllUsers()
     {
-        return response()->json(User::all(), 200);
+        return response()->json(Customer::all(), 200);
     }
     
     /**
@@ -38,7 +38,7 @@ class UserController extends Controller
     public function showOneUser($id)
     {
         try {
-            $user = User::findOrFail($id);
+            $user = Customer::findOrFail($id);
 
             return response()->json($user, 200);
 
@@ -50,22 +50,23 @@ class UserController extends Controller
     }
 
     public function showOneUserWithEmail(Request $request)
-    {
-        $user=User::select('id')->where('email',$request->email);
-        return response()->json($user->get('id')->get(0));
+    {    
+        $user=Customer::select('id', 'name', 'email' )->where('email',$request[0]['email']);
+        
+        return response()->json($user->get('id'));
     }
 
 
     public function createUser(Request $request)
     {
-        $user = User::create($request->all());
+        $user = Customer::create($request->all());
 
         return response()->json($user, 201);
     }
 
     public function updateUser($id, Request $request)
     {
-        $user = User::findOrFail($id);
+        $user = Customer::findOrFail($id);
         $user->update($request->all());
 
         return response()->json($user, 200);
@@ -73,7 +74,9 @@ class UserController extends Controller
 
     public function deleteUser($id)
     {
-        User::findOrFail($id)->delete();
+        Customer::findOrFail($id)->delete();
         return response('User deleted', 200);
     }
+
+    
 }

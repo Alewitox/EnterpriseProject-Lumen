@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\User;
+use App\Customer;
 
 class AuthController extends Controller
 {
@@ -19,22 +19,22 @@ class AuthController extends Controller
         //validate incoming request 
         $this->validate($request, [
             'name' => 'required|string',
-            'email' => 'required|email|unique:users',
+            'email' => 'required|email|unique:customers',
             'password' => 'required|string',
         ]);
 
         try {
 
-            $user = new User;
-            $user->name = $request->input('name');
-            $user->email = $request->input('email');
+            $customer = new Customer;
+            $customer->name = $request->input('name');
+            $customer->email = $request->input('email');
             $plainPassword = $request->input('password');
-            $user->password = app('hash')->make($plainPassword);
+            $customer->password = app('hash')->make($plainPassword);
 
-            $user->save();
+            $customer->save();
 
             //return successful response
-            return response()->json(['user' => $user, 'message' => 'User created'], 201);
+            return response()->json(['message' => 'User created'], 201);
 
         } catch (\Exception $e) {
             //return error message

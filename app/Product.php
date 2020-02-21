@@ -14,7 +14,7 @@ class Product extends Model {
      * @var array
      */
     protected $fillable = [
-        'name', 'description'
+       'name', 'description', 'img', 'id_distribution'
     ];
 
     /**
@@ -30,7 +30,7 @@ class Product extends Model {
     }
 
     public function availability() {
-        return $this->hasOne('App\Availability');
+        return $this->hasMany('App\Availability', 'id_product');
     }
 
     public function reservation() {

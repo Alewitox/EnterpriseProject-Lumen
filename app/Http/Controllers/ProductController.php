@@ -30,12 +30,18 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         $product->update($request->all());
 
-        return response()->json($product, 200);
+        return response()->json("Product updated", 200);
     }
 
     public function deleteProduct($id)
     {
         Product::findOrFail($id)->delete();
         return response()->json('Product deleted', 200);
+    }
+
+
+    public function countProducts()
+    {
+        return response()->json(Product::count());
     }
 }
