@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-        // $this->call('UsersTableSeeder');
+        
         // factory(App\Product::class, 10)->create();
 
         DB::table('distributions')->insert([
@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->insertProducts();
+         $this->call('AvailabilitiesTableSeeder');
 
         try {
 
@@ -122,4 +123,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
     }
+
+
+
 }

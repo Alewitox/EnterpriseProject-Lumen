@@ -46,7 +46,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->post('products', ['uses' => 'ProductController@createProduct']);
     $router->put('products/{id}', ['uses' => 'ProductController@updateProduct']);
     $router->delete('products/{id}', ['uses' => 'ProductController@deleteProduct']);
-
+    $router->post('productsTest', ['uses' => 'ProductController@createProductTest']);
 
     // Endpoints Distributions table
     $router->get('distribution',  ['uses' => 'DistributionController@showAllDistributions']);

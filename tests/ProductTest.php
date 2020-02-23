@@ -12,9 +12,9 @@ class ProductTest extends TestCase
 
     public function testCreateProduct()
     {
-        $this->post('/api/products', ['name' => 'masaje', 'description' => 'en el hotel Riu Maspalomas', 'id_distribution' => '1']);
+        $this->post('/api/productsTest', ['id'=>'1', 'name' => 'masaje', 'description' => 'en el hotel Riu Maspalomas','img' => 'imagen', 'id_distribution' => '1']);
         $this->seeStatusCode(201);
-        $this->seeJson(['name' => 'masaje', 'description' => 'en el hotel Riu Maspalomas', 'id_distribution' => '1']);
+        $this->seeJson(['name' => 'masaje', 'description' => 'en el hotel Riu Maspalomas', 'img' => 'imagen', 'id_distribution' => '1']);
     }
    
     
@@ -31,6 +31,7 @@ class ProductTest extends TestCase
                 'id',
                 'name',
                 'description',
+                'img'
             ]   
         );
     }
@@ -46,7 +47,8 @@ class ProductTest extends TestCase
         $this->seeJsonStructure([
             '*' =>[
                     'name',
-                    'description'
+                    'description',
+                    'img'
                 ]
         ]);
         
@@ -61,6 +63,7 @@ class ProductTest extends TestCase
         $parameters = [
             'name' => 'Update succesfull',
             'description' => 'New change',
+            'img' => 'New image',
             'id_distribution' => '1',
         ];
 

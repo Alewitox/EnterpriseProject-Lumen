@@ -10,7 +10,7 @@ class ReportController extends Controller {
   public function generateReport() {
        
     $jasper = new JasperPHP;
-    $jasper->compile(base_path('//public/productList.jrxml'))->execute();
+    //$jasper->compile(base_path('//public/productList.jrxml'))->execute();
     
     $filename = 'productList';
     $output = base_path('//public/' . $filename);
@@ -28,7 +28,7 @@ class ReportController extends Controller {
               'password' => '1234',
             ),
     )->execute();
-    return response()->json(['message' => 'Available products list saved on path /public']);
+    return response('Available products list saved on path /public');
 }
 
 }

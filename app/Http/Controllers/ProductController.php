@@ -44,4 +44,11 @@ class ProductController extends Controller
     {
         return response()->json(Product::count());
     }
+
+    public function createProductTest(Request $request)
+    {
+        $product = Product::insert($request->all());
+
+        return response()->json($request->all(), 201);
+    }
 }
